@@ -10,6 +10,7 @@ import QuoteValue from './components/QuoteValue';
 const ContentComponent = styled .div `
     margin: 0 auto;
     max-width: 600px;
+    padding: 3rem 0;
 `;
 
 const FormComponent = styled .div `

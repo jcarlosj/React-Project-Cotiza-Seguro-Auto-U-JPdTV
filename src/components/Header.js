@@ -5,8 +5,7 @@ import styled from '@emotion/styled';
 const ContentHeader = styled .header `
     background-color: #29303b;
     color: #FFFFFF;
-    font-weight: bold;
-    margin-top: 3rem;
+    font-weight: bold;margin-top: 3rem;
     padding: 1rem 2rem;
 `;
 /** Style Component H1 */
