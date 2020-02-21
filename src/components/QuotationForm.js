@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 /** Style Components */
@@ -46,11 +46,34 @@ const ButtonComponent = styled .button `
 
 /** Component */
 const QuotationForm = () => {
+
+    const [ data, setData ] = useState({
+        brand: '',
+        year: '',
+        plan: ''
+    });
+
+    /** Extraer valores usando Destructuracion */
+    const { brand, year, plan } = data;
+
+    /** Manejador de Cambios el State */
+    const handleChange = ( event ) => {
+        
+        setData({
+            ...data,
+            [event .target .name]: event .target .value         // Par clave valor de cada campo
+        });
+    }
+
     return (
         <form>
             <FieldComponent>
                 <LabelComponent>Marca</LabelComponent>
-                <SelectComponent>
+                <SelectComponent
+                    name="brand"
+                    value={ brand }
+                    onChange={ handleChange }
+                >
                     <option value="">-- Seleccione --</option>
                     <option value="americanos">Americano</option>
                     <option value="europeo">Europeo</option>
@@ -59,7 +82,11 @@ const QuotationForm = () => {
             </FieldComponent>
             <FieldComponent>
                 <LabelComponent>Año</LabelComponent>
-                <SelectComponent>
+                <SelectComponent
+                    name="year"
+                    value={ year }
+                    onChange={ handleChange }
+                >
                     <option value="">-- Seleccione --</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -78,12 +105,16 @@ const QuotationForm = () => {
                 <InputRadioComponent 
                     type="radio"
                     name="plan"
-                    value="basico"  
+                    value="basico" 
+                    checked={ plan === 'basico' } 
+                    onChange={ handleChange }
                 /><SpanComponent>Básico</SpanComponent>
                 <InputRadioComponent 
                     type="radio"
                     name="plan"
                     value="completo"  
+                    checked={ plan === 'completo' }
+                    onChange={ handleChange }
                 /><SpanComponent>Completo</SpanComponent>
             </FieldComponent>
             <FieldComponent>
