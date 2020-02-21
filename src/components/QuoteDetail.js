@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+/** Helpers */
+import { capitalize } from '../helpers/convert.helper';
+
 /** Style Component */
 const QuoteDetailComponent = styled .div `
     background-color: #FFFFFF;
@@ -38,9 +41,15 @@ const QuoteDetail = ({ details }) => {         // Destructuración del props
         <QuoteDetailComponent>
             <TitleComponent>Detalles de la cotización</TitleComponent>
             <ul>
-                <ItemComponent><SpanComponent>Marca:</SpanComponent> { brand }</ItemComponent>
-                <ItemComponent><SpanComponent>Año:</SpanComponent> { year }</ItemComponent>
-                <ItemComponent><SpanComponent>Plan:</SpanComponent> { plan }</ItemComponent>
+                <ItemComponent>
+                    <SpanComponent>Marca:</SpanComponent> { capitalize( brand ) }
+                </ItemComponent>
+                <ItemComponent>
+                    <SpanComponent>Año:</SpanComponent> { year }
+                </ItemComponent>
+                <ItemComponent>
+                    <SpanComponent>Plan:</SpanComponent> { capitalize( plan ) }
+                </ItemComponent>
             </ul>
         </QuoteDetailComponent>
     );
