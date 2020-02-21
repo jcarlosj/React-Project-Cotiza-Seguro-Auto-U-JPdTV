@@ -47,28 +47,47 @@ const ButtonComponent = styled .button `
 /** Component */
 const QuotationForm = () => {
 
-    const [ data, setData ] = useState({
-        brand: '',
-        year: '',
-        plan: ''
-    });
+    const // Define States
+        [ error, setError ] = useState( false ),
+        [ data, setData ] = useState({
+            brand: '',
+            year: '',
+            plan: ''
+        });
 
     /** Extraer valores usando Destructuracion */
     const { brand, year, plan } = data;
 
     /** Manejador de Cambios el State */
     const handleChange = ( event ) => {
-        
+        /** Actualiza State */
         setData({
             ...data,
             [event .target .name]: event .target .value         // Par clave valor de cada campo
         });
     }
 
+    const handleSubmit = ( event ) => {
+        event .preventDefault();
+
+        /** Valida campos del formulario */
+        if( brand .trim() === '' || year .trim() === '' || plan .trim() === '' ) {
+            setError( true );
+            return;
+        }
+        setError( false );
+    } 
+
     return (
-        <form>
+        <form
+            onSubmit={ handleSubmit }
+        >
+            { error 
+                ?   <p>Todos los campos son obligatorios</p>
+                :   null
+            }
             <FieldComponent>
-                <LabelComponent>Marca</LabelComponent>
+                <LabelComponent>Marca *</LabelComponent>
                 <SelectComponent
                     name="brand"
                     value={ brand }
@@ -81,7 +100,7 @@ const QuotationForm = () => {
                 </SelectComponent>
             </FieldComponent>
             <FieldComponent>
-                <LabelComponent>Año</LabelComponent>
+                <LabelComponent>Año *</LabelComponent>
                 <SelectComponent
                     name="year"
                     value={ year }
@@ -101,7 +120,7 @@ const QuotationForm = () => {
                 </SelectComponent>
             </FieldComponent>
             <FieldComponent>
-                <LabelComponent>Plan</LabelComponent>
+                <LabelComponent>Plan *</LabelComponent>
                 <InputRadioComponent 
                     type="radio"
                     name="plan"
@@ -118,7 +137,7 @@ const QuotationForm = () => {
                 /><SpanComponent>Completo</SpanComponent>
             </FieldComponent>
             <FieldComponent>
-                <ButtonComponent type="button">Cotizar</ButtonComponent>
+                <ButtonComponent type="submit">Cotizar</ButtonComponent>
             </FieldComponent>
         </form>
     );
