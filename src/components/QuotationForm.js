@@ -88,7 +88,7 @@ const QuotationForm = ({ saveQuote }) => {      // Destructuración del props
 
         /** Envia al State del componente padre */
         saveQuote({
-            quote: quote( year, brand, plan ),  // Calcula Cotización
+            quotation: quote( year, brand, plan ),  // Calcula Cotización
             data
         });    
     } 
