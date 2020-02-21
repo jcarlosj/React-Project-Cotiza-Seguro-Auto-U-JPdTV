@@ -1,5 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import styled from '@emotion/styled';
 
+/** Style Component */
+const QuoteDetailComponent = styled .div `
+    background-color: #FFFFFF;
+    color: #29303b;
+    margin: .5rem 0;
+    padding: 0 0 1rem 0;
+    text-align: center;
+`;
+const TitleComponent = styled .h2 `
+    background-color: #29303b;
+    color: #FFFFFF;
+    font-family: 'Slabo 27px', serif;
+    font-size: 1.4rem;
+    padding: 1rem;
+`;
+const ItemComponent = styled .li `
+    font-size: 1.2rem;
+    list-style: none;
+    padding: .7rem;
+`;
+const SpanComponent = styled .span `
+    font-weight: bold
+`;
+
+/** Component */
 const QuoteDetail = ({ details }) => {         // Destructuración del props
     const { brand, year, plan } = details;     // Extrae datos usando Destructuración
 
@@ -9,14 +35,14 @@ const QuoteDetail = ({ details }) => {         // Destructuración del props
     }
 
     return(
-        <Fragment>
-            <h2>Detalles de la cotización</h2>
+        <QuoteDetailComponent>
+            <TitleComponent>Detalles de la cotización</TitleComponent>
             <ul>
-                <li>Marca: { brand }</li>
-                <li>Año: { year }</li>
-                <li>Plan: { plan }</li>
+                <ItemComponent><SpanComponent>Marca:</SpanComponent> { brand }</ItemComponent>
+                <ItemComponent><SpanComponent>Año:</SpanComponent> { year }</ItemComponent>
+                <ItemComponent><SpanComponent>Plan:</SpanComponent> { plan }</ItemComponent>
             </ul>
-        </Fragment>
+        </QuoteDetailComponent>
     );
 }
 
