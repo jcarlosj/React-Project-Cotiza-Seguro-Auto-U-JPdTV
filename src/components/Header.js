@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 /** Style Component Header (Crea 'Componente' de estilo) indicando el nombre de la etiqueta a desplegar */
 const ContentHeader = styled .header `
-    background-color: #26C6DA;
+    background-color: #29303b;
     color: #FFFFFF;
     font-weight: bold;
     padding: 1rem 2rem;
