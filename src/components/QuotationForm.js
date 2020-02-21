@@ -43,6 +43,13 @@ const ButtonComponent = styled .button `
         cursor: pointer;
     }
 `;
+const ErrorComponent = styled .p `
+    background-color: #FF194833;
+    color: #FF1948;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    padding: 1rem;
+`;
 
 /** Component */
 const QuotationForm = () => {
@@ -83,7 +90,7 @@ const QuotationForm = () => {
             onSubmit={ handleSubmit }
         >
             { error 
-                ?   <p>Todos los campos son obligatorios</p>
+                ?   <ErrorComponent>Todos los campos son obligatorios</ErrorComponent>
                 :   null
             }
             <FieldComponent>

@@ -12,7 +12,7 @@ const ContentComponent = styled .div `
 
 const FormComponent = styled .div `
     background-color: #d4e9ee;
-    padding: 2rem;
+    padding: 1.2rem 2rem;
 `;
 
 function App() {
