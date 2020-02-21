@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/** Clases con las que interactuará  la librería react-transition-group */
+span.total {
+  position: relative;
+  width: 100%;
+}
+.total-enter {
+  transition: 1s;
+}
+.total-enter.total-enter-active {
+  transform: translateY( 0 );
+}
+.total-exit {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: translateY( 0 );
+  transition: 1s;
+}
+.total-exit-active {
+  opacity: 0;
+  transform: translateY( -10% );
+}

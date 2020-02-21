@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 /** Style Component */
 const MessageComponent = styled .p `
@@ -15,10 +16,14 @@ const TotalPriceComponent = styled .div `
     padding: 1rem;
     text-align: center;
 `;
+const TitleComponent = styled .h3 `
+    text-transform: uppercase;
+`;
 const ValueComponent = styled .p `
     font-size: 3rem;
     margin: 0;
 `;
+const TotalComponent = styled .div ``;
 
 /** Component */
 const QuoteValue = ({ quotation }) => {         // Destructuracion de props
@@ -26,8 +31,20 @@ const QuoteValue = ({ quotation }) => {         // Destructuracion de props
         ( quotation === 0 )
             ?   <MessageComponent>Elige marca, año y plan asegurador</MessageComponent> 
             :   <TotalPriceComponent>
-                    <h3>Valor de la cotización</h3> 
-                    <ValueComponent>$ { quotation } </ValueComponent>
+                    <TransitionGroup
+                        component="p"
+                        className="total"
+                    >
+                        <CSSTransition
+                            classNames="total"
+                            key={ quotation }
+                            timeout={ { enter: 1000, exit: 1000 } }
+                        >
+                            {/* <TitleComponent>Valor de la cotización</TitleComponent>  */}
+                            <ValueComponent>$ Total { quotation } </ValueComponent>
+                        
+                        </CSSTransition>
+                    </TransitionGroup>
                 </TotalPriceComponent>
     );
 }
