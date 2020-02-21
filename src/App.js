@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 /** Components */
 import Header from './components/Header';
 import QuotationForm from './components/QuotationForm';
+import QuoteDetail from './components/QuoteDetail';
 
 /** Style Component div */
 const ContentComponent = styled .div `
@@ -16,6 +17,19 @@ const FormComponent = styled .div `
 `;
 
 function App() {
+
+    /** Define State  */
+    const [ quoteValue, setQuoteValue ] = useState({
+        quota: '',
+        data: {
+            brand: '',
+            year: '',
+            plan: ''
+        }
+    });
+
+    const { data } = quoteValue;
+
     return (
         <ContentComponent>
             <Header 
@@ -23,7 +37,12 @@ function App() {
             />
         
             <FormComponent>
-                <QuotationForm />
+                <QuotationForm
+                    saveQuote={ setQuoteValue }
+                />
+                <QuoteDetail 
+                    details={ data }
+                />
             </FormComponent>
         </ContentComponent>
     );

@@ -54,7 +54,7 @@ const ErrorComponent = styled .p `
 `;
 
 /** Component */
-const QuotationForm = () => {
+const QuotationForm = ({ saveQuote }) => {      // Destructuración del props
 
     const // Define States
         [ error, setError ] = useState( false ),
@@ -86,7 +86,11 @@ const QuotationForm = () => {
         }
         setError( false );
 
-        quote( year, brand, plan );
+        /** Envia al State del componente padre */
+        saveQuote({
+            quote: quote( year, brand, plan ),  // Calcula Cotización
+            data
+        });    
     } 
 
     /** Calcula Cotización */
@@ -103,6 +107,8 @@ const QuotationForm = () => {
         baseCostValue = baseCostValue * getCostPerBrand( b );   // (2)
         baseCostValue = baseCostValue * getCostPerPlan( p );    // (3)
         console .log( 'Total', baseCostValue );
+
+        return baseCostValue .toFixed( 2 );   // Costo final con solo dos digitos de decimales
     }
 
     return (
