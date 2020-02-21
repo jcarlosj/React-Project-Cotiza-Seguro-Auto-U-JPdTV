@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+/** Helpers */
+import { getDifferenceInYears, getCostPerBrand, getCostPerPlan } from '../helpers/calculations.helpers';
 
 /** Style Components */
 const FieldComponent = styled .div `
@@ -83,7 +85,25 @@ const QuotationForm = () => {
             return;
         }
         setError( false );
+
+        quote( year, brand, plan );
     } 
+
+    /** Calcula Cotización */
+    const quote = ( y, b, p ) => {
+        let years = getDifferenceInYears( y ),
+            baseCostValue = 2000;
+        /** Calculo:
+         *  Se realizarán teniendo encuenta las siguientes, características:
+         *  1. Por cada año restar el 3%.
+         *  2. Por marca incrementar: 30% (Europeo), 15% (Americano), 5% (Asiático)
+         *  3. Por tipo de plan incrementar: 20% (Básico), 50% (Completo) 
+         */
+        baseCostValue -= baseCostValue * years * 0.03;          // (1)
+        baseCostValue = baseCostValue * getCostPerBrand( b );   // (2)
+        baseCostValue = baseCostValue * getCostPerPlan( p );    // (3)
+        console .log( 'Total', baseCostValue );
+    }
 
     return (
         <form
@@ -101,9 +121,9 @@ const QuotationForm = () => {
                     onChange={ handleChange }
                 >
                     <option value="">-- Seleccione --</option>
-                    <option value="americanos">Americano</option>
-                    <option value="europeo">Europeo</option>
-                    <option value="asiatico">Asiatico</option>
+                    <option value="american">Americano</option>
+                    <option value="european">Europeo</option>
+                    <option value="asiatic">Asiatico</option>
                 </SelectComponent>
             </FieldComponent>
             <FieldComponent>
@@ -131,15 +151,15 @@ const QuotationForm = () => {
                 <InputRadioComponent 
                     type="radio"
                     name="plan"
-                    value="basico" 
-                    checked={ plan === 'basico' } 
+                    value="basic" 
+                    checked={ plan === 'basic' } 
                     onChange={ handleChange }
                 /><SpanComponent>Básico</SpanComponent>
                 <InputRadioComponent 
                     type="radio"
                     name="plan"
-                    value="completo"  
-                    checked={ plan === 'completo' }
+                    value="complete"  
+                    checked={ plan === 'complete' }
                     onChange={ handleChange }
                 /><SpanComponent>Completo</SpanComponent>
             </FieldComponent>
