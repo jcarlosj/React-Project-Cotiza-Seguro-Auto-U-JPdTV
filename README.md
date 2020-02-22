@@ -1,3 +1,7 @@
+# Cotiza Seguro de Automóvil
+
+Este proyecto simula la cotización de un seguro de automóvil diligenciando el formulario. La funcionalidad se desarrolla haciendo uso de los conceptos como Componentes, Props, State, Hooks (useState) y PropTypes de React. (v16.12.0). Además de la implementación de librerías para la creación de Style components y Animaciones en React con react-transition-group.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
