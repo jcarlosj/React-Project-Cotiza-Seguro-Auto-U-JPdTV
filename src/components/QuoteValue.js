@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 /** Style Component */
 const MessageComponent = styled .p `
@@ -46,6 +47,11 @@ const QuoteValue = ({ quotation }) => {         // Destructuracion de props
                     </TransitionGroup>
                 </TotalPriceComponent>
     );
+}
+
+/** Verificación de Tipos */
+QuoteValue .propTypes = {
+    quotation: PropTypes .number .isRequired
 }
 
 export default QuoteValue;

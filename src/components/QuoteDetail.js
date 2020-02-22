@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 /** Helpers */
 import { capitalize } from '../helpers/convert.helper';
@@ -53,6 +54,11 @@ const QuoteDetail = ({ details }) => {         // Destructuración del props
             </ul>
         </QuoteDetailComponent>
     );
+}
+
+/** Verificación de Tipos */
+QuoteDetail .propTypes = {
+    details: PropTypes .object .isRequired
 }
 
 export default QuoteDetail;

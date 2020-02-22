@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+
 /** Helpers */
 import { getDifferenceInYears, getCostPerBrand, getCostPerPlan } from '../helpers/calculations.helpers';
 
@@ -125,7 +127,7 @@ const QuotationForm = ({ saveQuote, loadSpinner }) => {      // Destructuración
         baseCostValue = baseCostValue * getCostPerPlan( p );    // (3)
         console .log( 'Total', baseCostValue );
 
-        return baseCostValue .toFixed( 2 );   // Costo final con solo dos digitos de decimales
+        return Number( baseCostValue .toFixed( 2 ) );   // Costo final con solo dos digitos de decimales
     }
 
     return (
@@ -197,6 +199,12 @@ const QuotationForm = ({ saveQuote, loadSpinner }) => {      // Destructuración
             </FieldComponent>
         </form>
     );
+}
+
+/** Verificación de Tipos */
+QuotationForm .propTypes = {
+    saveQuote: PropTypes .func .isRequired,
+    loadSpinner: PropTypes .func .isRequired
 }
 
 export default QuotationForm;

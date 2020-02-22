@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 /** Style Component Header (Crea 'Componente' de estilo) indicando el nombre de la etiqueta a desplegar */
 const ContentHeader = styled .header `
@@ -23,6 +24,11 @@ const Header = ({ title }) => {     // Destructuracion del props
             <ContentH1>{ title }</ContentH1>
         </ContentHeader>
     );
+}
+
+/** Verificación de Tipos */
+Header .propTypes = {
+    title: PropTypes .string .isRequired
 }
 
 export default Header;
