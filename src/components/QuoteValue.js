@@ -32,7 +32,7 @@ const QuoteValue = ({ quotation }) => {         // Destructuracion de props
             ?   <MessageComponent>Elige marca, año y plan asegurador</MessageComponent> 
             :   <TotalPriceComponent>
                     <TransitionGroup
-                        component="p"
+                        component="span"
                         className="total"
                     >
                         <CSSTransition
@@ -40,8 +40,7 @@ const QuoteValue = ({ quotation }) => {         // Destructuracion de props
                             key={ quotation }
                             timeout={ { enter: 1000, exit: 1000 } }
                         >
-                            {/* <TitleComponent>Valor de la cotización</TitleComponent>  */}
-                            <ValueComponent>$ Total { quotation } </ValueComponent>
+                            <ValueComponent>$ Total <span>{ quotation }</span> </ValueComponent>
                         
                         </CSSTransition>
                     </TransitionGroup>

@@ -14,8 +14,17 @@ const LabelComponent = styled .label `
     font-size: 1.4rem;
     font-weight: bold;
 `;
-const SpanComponent = styled .span `
+const LabelRadioComponent = styled .label `
     font-size: 1.4rem;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 `;
 const SelectComponent = styled .select `
     background-color: #FFFFFF;
@@ -27,6 +36,8 @@ const SelectComponent = styled .select `
 `;
 const InputRadioComponent = styled .input `
     margin: 1rem;
+    height: 18px;
+    width: 18px;
 `;
 const ButtonComponent = styled .button `
     background-color: #FF1948;
@@ -160,20 +171,26 @@ const QuotationForm = ({ saveQuote, loadSpinner }) => {      // Destructuración
             </FieldComponent>
             <FieldComponent>
                 <LabelComponent>Plan *</LabelComponent>
-                <InputRadioComponent 
-                    type="radio"
-                    name="plan"
-                    value="basic" 
-                    checked={ plan === 'basic' } 
-                    onChange={ handleChange }
-                /><SpanComponent>Básico</SpanComponent>
-                <InputRadioComponent 
-                    type="radio"
-                    name="plan"
-                    value="complete"  
-                    checked={ plan === 'complete' }
-                    onChange={ handleChange }
-                /><SpanComponent>Completo</SpanComponent>
+                <LabelRadioComponent>
+                    <InputRadioComponent 
+                        type="radio"
+                        name="plan"
+                        value="basic" 
+                        checked={ plan === 'basic' } 
+                        onChange={ handleChange }
+                    />
+                    Básico
+                </LabelRadioComponent>
+                <LabelRadioComponent>
+                    <InputRadioComponent 
+                        type="radio"
+                        name="plan"
+                        value="complete"  
+                        checked={ plan === 'complete' }
+                        onChange={ handleChange }
+                    />
+                    Completo
+                </LabelRadioComponent>
             </FieldComponent>
             <FieldComponent>
                 <ButtonComponent type="submit">Cotizar</ButtonComponent>
