@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import styled from '@emotion/styled';
 /** Components */
 import Header from './components/Header';
 import QuotationForm from './components/QuotationForm';
 import QuoteDetail from './components/QuoteDetail';
 import QuoteValue from './components/QuoteValue';
+import Spinner from './components/Spinner';
 
 /** Style Component div */
 const ContentComponent = styled .div `
@@ -21,14 +22,16 @@ const FormComponent = styled .div `
 function App() {
 
     /** Define State  */
-    const [ quoteValue, setQuoteValue ] = useState({
-        quotation: 0,
-        data: {
-            brand: '',
-            year: '',
-            plan: ''
-        }
-    });
+    const 
+        [ showSpinner , setShowSpinner ] = useState( false ),
+        [ quoteValue, setQuoteValue ] = useState({
+            quotation: 0,
+            data: {
+                brand: '',
+                year: '',
+                plan: ''
+            }
+        });
 
     const { quotation, data } = quoteValue;     // Extrae datos    
     console .log( 'quotation', quotation );
@@ -42,13 +45,23 @@ function App() {
             <FormComponent>
                 <QuotationForm
                     saveQuote={ setQuoteValue }
+                    loadSpinner={ setShowSpinner }
                 />
-                <QuoteDetail 
-                    details={ data }
-                />
-                <QuoteValue
-                    quotation={ quotation }
-                />
+                { showSpinner
+                    ?   <Spinner />
+                    :   null
+                }
+                { ! showSpinner
+                    ?   <Fragment>
+                            <QuoteDetail 
+                                details={ data }
+                            />
+                            <QuoteValue
+                                quotation={ quotation }
+                            />
+                        </Fragment>
+                    :   null
+                }
             </FormComponent>
         </ContentComponent>
     );

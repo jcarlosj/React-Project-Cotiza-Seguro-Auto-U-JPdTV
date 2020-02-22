@@ -54,7 +54,7 @@ const ErrorComponent = styled .p `
 `;
 
 /** Component */
-const QuotationForm = ({ saveQuote }) => {      // Destructuración del props
+const QuotationForm = ({ saveQuote, loadSpinner }) => {      // Destructuración del props
 
     const // Define States
         [ error, setError ] = useState( false ),
@@ -86,11 +86,17 @@ const QuotationForm = ({ saveQuote }) => {      // Destructuración del props
         }
         setError( false );
 
-        /** Envia al State del componente padre */
-        saveQuote({
-            quotation: quote( year, brand, plan ),  // Calcula Cotización
-            data
-        });    
+        loadSpinner( true );
+        setTimeout( () => {
+            loadSpinner( false );
+
+            /** Envia al State del componente padre */
+            saveQuote({
+                quotation: quote( year, brand, plan ),  // Calcula Cotización
+                data
+            });
+        }, 3000 );
+    
     } 
 
     /** Calcula Cotización */
